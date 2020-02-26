@@ -4,13 +4,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 
-Future<List<Photo>>fetchPhotos(http.Client client) async{
+Future<List<Photo>> fetchPhotos(http.Client client) async{
   final response=await client.get('https://jsonplaceholder.typicode.com/photos');
 
   return compute(parsePhotos,response.body);
 }
 
-List<Photo>parsePhotos(String responseBody)
+List<Photo> parsePhotos(String responseBody)
 {
   final parse=jsonDecode(responseBody).cast<Map<String,dynamic>>();
 
